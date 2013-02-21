@@ -46,10 +46,10 @@ class Swift_Mime_HeaderEncoder_QpNativeHeaderEncoder extends Swift_Encoder_QpNat
      *
      * @return string
      */
-    public function encodeString($string  )
+    public function encodeString($string)
     {
         return str_replace(array(' ', '=20', "=\r\n"), array('_', '_', "\r\n"),
-            parent::encodeString($string)
+            parent::encodeString($string, 0, 0)
         );
     }
 }
