@@ -30,23 +30,25 @@ class Swift_Mime_HeaderEncoder_QpNativeHeaderEncoder extends Swift_Encoder_QpNat
     /**
      * Get the name of this encoding scheme.
      *
-     * Returns the string 'QNative'.
+     * Returns the string 'Q'.
      *
      * @return string
      */
     public function getName()
     {
-        return 'QNative';
+        return 'Q';
     }
 
     /**
      * Takes an unencoded string and produces a native QP encoded string from it.
      *
      * @param string  $string          string to encode
+     * @param integer $firstLineOffset optional
+     * @param integer $maxLineLength   optional, 0 indicates the default of 76 chars
      *
      * @return string
      */
-    public function encodeString($string)
+    public function encodeString($string, $firstLineOffset = 0, $maxLineLength = 0)
     {
         return str_replace(array(' ', '=20', "=\r\n"), array('_', '_', "\r\n"),
             parent::encodeString($string, 0, 0)
